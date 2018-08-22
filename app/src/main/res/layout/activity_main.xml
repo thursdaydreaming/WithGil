@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/baseline_call_black_24" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/menu"
@@ -36,6 +36,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        app:srcCompat="@drawable/baseline_menu_white_24"
+        app:fab_colorNormal="@color/fabPrimary"
+        app:fab_colorPressed="@color/fabPressed"
+        app:fab_colorRipple="@color/fabRipple"/>
 
 </android.support.design.widget.CoordinatorLayout>
