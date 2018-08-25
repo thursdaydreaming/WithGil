@@ -1,7 +1,8 @@
 package com.example.melon.withgil;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,9 +16,10 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton;
 
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, View.OnClickListener {
 
     private GoogleMap mMap;
 
@@ -32,14 +34,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.menu);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        FloatingActionButton fab_emergency_call = (FloatingActionButton) findViewById(R.id.fab_emergency_call);
+        FloatingActionButton fab_settings = findViewById(R.id.fab_settings);
+        FloatingActionButton fab_protector = findViewById(R.id.fab_contact_protector);
+        fab_emergency_call.setOnClickListener(this);
+        fab_settings.setOnClickListener(this);
+        fab_protector.setOnClickListener(this);
     }
 
     @Override
@@ -71,5 +71,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         LatLng sydney = new LatLng(-34, 151);
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.fab_contact_protector:
+                Intent protectorIntent = new Intent(MainActivity.this, ProtectorActivity.class);
+                startActivity(protectorIntent);
+
+            case R.id.fab_settings:
+                Intent settingIntent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(settingIntent);
+
+            case R.id.fab_emergency_call:
+                Intent emergencyCallIntent = new Intent("android.intent.action.DIAL", Uri.parse("tel:112"));
+                startActivity(emergencyCallIntent);
+        }
     }
 }

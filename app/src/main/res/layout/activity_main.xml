@@ -22,23 +22,52 @@
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/emergency_call"
+    <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_emergency_call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/baseline_call_black_24" />
+        app:fabIcon="@drawable/baseline_call_black_36" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
-        android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@drawable/baseline_menu_white_24"
-        app:fab_colorNormal="@color/fabPrimary"
-        app:fab_colorPressed="@color/fabPressed"
-        app:fab_colorRipple="@color/fabRipple"/>
+    <com.robertlevonyan.views.customfloatingactionbutton.FloatingLayout
+        android:id="@+id/floating_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:fabMenuGravity="bottom"
+        app:fabMenuStyle="popUp">
+
+        <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+            android:id="@+id/fab1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabIcon="@drawable/baseline_menu_white_36"
+            app:fabColor="#acdace" />
+
+        <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabColor="#ff9c10"
+            app:fabIcon="@drawable/baseline_settings_white_24"
+            app:fabSizes="mini" />
+
+        <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_scout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabColor="#0b7bc1"
+            app:fabIcon="@drawable/baseline_directions_walk_white_24"
+            app:fabSizes="mini" />
+
+        <com.robertlevonyan.views.customfloatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_contact_protector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabColor="#ea201c"
+            app:fabIcon="@drawable/baseline_mail_white_24"
+            app:fabSizes="mini" />
+
+    </com.robertlevonyan.views.customfloatingactionbutton.FloatingLayout>
 
 </android.support.design.widget.CoordinatorLayout>
