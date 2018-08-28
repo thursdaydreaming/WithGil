@@ -65,10 +65,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         };
 
-        TedPermission.with(this)
+        new TedPermission(this)
                 .setPermissionListener(permissionListener)
-                .setDeniedTitle("Permission denied")
-                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.SEND_SMS);
+                .setRationaleMessage(R.string.rationale_message)
+                .setDeniedMessage(
+                        "If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                .setGotoSettingButtonText("bla bla")
+                .setPermissions(Manifest.permission.ACCESS_FINE_LOCATION)
+                .check();
+
+
     }
 
     @Override
@@ -113,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (initialLocation != null) {
             lastLatLng = new LatLng(initialLocation.getLatitude(), initialLocation.getLongitude());
         }
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(lastLatLng));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(lastLatLng, (float) 15));
 
     }
 
